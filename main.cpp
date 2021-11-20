@@ -2,11 +2,13 @@
 #include <cstdlib>
 #include <conio.h>
 #include "Had.h"
+// MAKROS
 
 #define sirka 50
 #define vyska 25
 
-//had had had
+// test test
+
 
 using namespace std;
 

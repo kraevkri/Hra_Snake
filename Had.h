@@ -3,10 +3,13 @@
 
 #include <windows.h>
 
+#define sirka 50
+#define vyska 25
+
 class Had
 {
     private:
-        COORD poz;
+        COORD pozice;
         int delka;
         int rychlost;
         char smerHada;
@@ -15,8 +18,13 @@ class Had
         Had(COORD pos, int rychlost);
         void zmenaSmeru(char smer);     //meni smer
         void pohniHada();               //dava pohyb
+        void rust();
 
         COORD ziskatPozici();
+
+        bool snezeno(COORD jidlo);
+        bool narazil();
+
 };
 
 #endif // HAD_H

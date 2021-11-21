@@ -1,5 +1,6 @@
 #include "Had.h"
 #include<conio.h>
+
 Had::Had(COORD pozice, int rychlost)
 {
     this->pozice=pozice;
@@ -7,9 +8,13 @@ Had::Had(COORD pozice, int rychlost)
     delka=1;
     smerHada='n';
 
+    telo.push_back(pozice);
+
 }
 
 void Had::zmenaSmeru(char smer){smerHada=smer;}
+
+vector<COORD> Had::ziskat_telo() { return telo; }
 
 void Had::pohniHada()
 {
@@ -21,6 +26,9 @@ void Had::pohniHada()
             case 'v': pozice.X +=rychlost; break;
 
         }
+
+        telo.push_back(pozice);
+        if(telo.size() > delka) telo.erase(telo.begin());
 }
 
 

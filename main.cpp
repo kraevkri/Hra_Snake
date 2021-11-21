@@ -10,7 +10,6 @@
 
 
 
-
 using namespace std;
 
 Had had({sirka/2,vyska/2}, 1);
@@ -24,6 +23,8 @@ void plocha()
     COORD poziceHada=had.ziskatPozici();
     COORD poziceJidla=jidlo.ziskatPozici();
 
+    vector<COORD> had_telo = had.ziskat_telo();
+
     for(int i=0; i<vyska; i++)
     {
         cout<<"\t\t\t|";
@@ -35,8 +36,24 @@ void plocha()
             else if(i==poziceHada.Y && j+1==poziceHada.X) cout<<'o';
             else if(i==poziceJidla.Y&&j+1==poziceJidla.X) cout<<'@';
 
-            else cout<<' ';
+            else
+            {
+                bool telohada = false;
+                for(int k = 0; k < had_telo.size()-1; k++)
+                {
+                    if(i== had_telo[k].Y && j+1 == had_telo[k].X)
+                    {
+
+                        cout << 'o';
+                        telohada = true;
+                        break;
+                    }
+            }
+
+            if(!telohada) cout << ' ';
+            }
         }
+
         cout<<"|\n";
     }
 }

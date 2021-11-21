@@ -2,9 +2,12 @@
 #define HAD_H
 
 #include <windows.h>
+#include <vector>
 
 #define sirka 50
 #define vyska 25
+
+using namespace std;
 
 class Had
 {
@@ -13,12 +16,15 @@ class Had
         int delka;
         int rychlost;
         char smerHada;
+        vector<COORD> telo;
 
     public:
         Had(COORD pos, int rychlost);
         void zmenaSmeru(char smer);     //meni smer
         void pohniHada();               //dava pohyb
         void rust();
+
+        vector<COORD> ziskat_telo();
 
         COORD ziskatPozici();
 

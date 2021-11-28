@@ -3,6 +3,9 @@
 #include <ctime>
 #include "Had.h"
 #include "Jidlo.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 // MAKROS
 
 #define sirka 50
@@ -12,7 +15,7 @@
 
 using namespace std;
 
-Had had({sirka/2,vyska/2}, 1);
+Had had({sirka/2,vyska/2}, 1); //vykresleni hada (1 je rychlost - po jednom policku)
 Jidlo jidlo;
 
 int body;
@@ -23,25 +26,25 @@ void plocha()
     COORD poziceHada=had.ziskatPozici();
     COORD poziceJidla=jidlo.ziskatPozici();
 
-    vector<COORD> had_telo = had.ziskat_telo();
+    vector<COORD> telo_hada = had.ziskat_telo();
 
-    for(int i=0; i<vyska; i++)
+    for(int i=0; i<vyska; i++) // skript pro plochu
     {
         cout<<"\t\t\t|";
 
-        for(int j=0;j<sirka-2; j++)
+        for(int j=0;j<sirka-2; j++) // protože to má 2 stìny (2 hrany proto -2) // skript pro plochu
         {
-            if(i==0||i==vyska-1) cout<<'_';
+            if(i==0||i==vyska-1) cout<<'#'; // -1 protože to je vykreslení spodní a horní stìny
 
-            else if(i==poziceHada.Y && j+1==poziceHada.X) cout<<'o';
-            else if(i==poziceJidla.Y&&j+1==poziceJidla.X) cout<<'@';
+            else if(i==poziceHada.Y && j+1==poziceHada.X) cout<<'o'; // objekt hada po y a x
+            else if(i==poziceJidla.Y&&j+1==poziceJidla.X) cout<<'@'; // objekt hada po y a x
 
             else
             {
                 bool telohada = false;
-                for(int k = 0; k < had_telo.size()-1; k++)
+                for(int k = 0; k < telo_hada.size()-1; k++)
                 {
-                    if(i== had_telo[k].Y && j+1 == had_telo[k].X)
+                    if(i== telo_hada[k].Y && j+1 == telo_hada[k].X)
                     {
 
                         cout << 'o';
@@ -64,7 +67,7 @@ int main()
     body=0;
 
 
-    srand(time(NULL));
+    srand(time(NULL)); //random generator
 
     jidlo.generujJidlo();
 
@@ -75,9 +78,9 @@ int main()
         plocha();
 
 
-        if(kbhit())
+        if(kbhit()) // stisknuty klavesy
         {
-            switch(getch()){
+            switch(getch()){ //getch nám dá klávesu kterou zmáèkneme
                 case 'w': had.zmenaSmeru('s'); break;
                 case 's': had.zmenaSmeru('j'); break;
                 case 'a': had.zmenaSmeru('z'); break;
@@ -101,7 +104,7 @@ int main()
 
         had.pohniHada();
 
-        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,0});
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,0}); //místo cls, kde bliká obrazovka
 
 
     }

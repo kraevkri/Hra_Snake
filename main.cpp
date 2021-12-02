@@ -20,6 +20,38 @@ Jidlo jidlo;
 
 int body;
 
+void nazev()
+{
+    cout << "\t\t\t\t#           #" << "\t        ##        " << "\t##########   " << endl;
+    cout << "\t\t\t\t#           #" << "\t       #  #       " << "\t#         #  " << endl;
+    cout << "\t\t\t\t#           #" << "\t      #    #      " << "\t#          # " << endl;
+    cout << "\t\t\t\t#           #" << "\t     #      #     " << "\t#          # " << endl;
+    cout << "\t\t\t\t#############" << "\t    ##########    " << "\t#          # " << endl;
+    cout << "\t\t\t\t#           #" << "\t   #          #   " << "\t#          # " << endl;
+    cout << "\t\t\t\t#           #" << "\t  #            #  " << "\t#          # " << endl;
+    cout << "\t\t\t\t#           #" << "\t #              # " << "\t#         #  " << endl;
+    cout << "\t\t\t\t#           #" << "\t#                #" << "\t##########   " << endl;
+
+    cout << "Zadejte symbol hada. (#,@)" << endl;
+    cin >> Had::hadchar;
+    if (Had::hadchar!='#'&& Had::hadchar!='@'){
+        exit(1);
+    }
+
+    cout << "Zadejte symbol jidla. (0,1)" << endl;
+    cin >> Jidlo::jidlochar;
+    if (Jidlo::jidlochar!='0'&& Jidlo::jidlochar!='1'){
+        exit(1);
+    }
+
+
+    system("CLS");
+
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),{0,0});
+
+}
+
+
 void plocha()
 {
 
@@ -36,8 +68,8 @@ void plocha()
         {
             if(i==0||i==vyska-1) cout<<'#'; // -1 protože to je vykreslení spodní a horní stìny
 
-            else if(i==poziceHada.Y && j+1==poziceHada.X) cout<<'o'; // objekt hada po y a x
-            else if(i==poziceJidla.Y&&j+1==poziceJidla.X) cout<<'@'; // objekt hada po y a x
+            else if(i==poziceHada.Y && j+1==poziceHada.X) cout<<Had::hadchar; // objekt hada po y a x
+            else if(i==poziceJidla.Y&&j+1==poziceJidla.X) cout<<Jidlo::jidlochar; // objekt hada po y a x
 
             else
             {
@@ -47,7 +79,7 @@ void plocha()
                     if(i== telo_hada[k].Y && j+1 == telo_hada[k].X)
                     {
 
-                        cout << 'o';
+                        cout << Had::hadchar;
                         telohada = true;
                         break;
                     }
@@ -64,6 +96,7 @@ void plocha()
 
 int main()
 {
+    nazev();
     body=0;
 
 

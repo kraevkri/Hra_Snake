@@ -15,6 +15,7 @@ class Jidlo
     public:
         void generujJidlo();
         COORD ziskatPozici();
+        static char jidlochar;
 };
 
 #endif // JIDLO_H

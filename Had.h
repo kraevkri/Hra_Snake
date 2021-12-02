@@ -15,7 +15,7 @@ class Had
         COORD pozice;
         int delka;
         int rychlost;
-        char smerHada;
+        char smerHada; //nebo string (øetìzec)
         vector<COORD> telo;
 
     public:
@@ -23,6 +23,7 @@ class Had
         void zmenaSmeru(char smer);     //meni smer
         void pohniHada();               //dava pohyb
         void rust();
+        static char hadchar;
 
         vector<COORD> ziskat_telo();
 

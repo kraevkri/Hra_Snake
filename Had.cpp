@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+char Had::hadchar =0;
+
 Had::Had(COORD pozice, int rychlost)
 {
     this->pozice=pozice;

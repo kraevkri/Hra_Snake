@@ -1,6 +1,5 @@
 #ifndef HAD_H
 #define HAD_H
-
 #include <windows.h>
 #include <vector>
 
@@ -15,8 +14,8 @@ class Had
         COORD pozice;
         int delka;
         int rychlost;
-        char smerHada; //nebo string (øetìzec)
-        vector<COORD> telo;
+        char smerHada; //nebo string (retezec)
+        vector <COORD> telo;
 
     public:
         Had(COORD pos, int rychlost);
@@ -24,14 +23,10 @@ class Had
         void pohniHada();               //dava pohyb
         void rust();
         static char hadchar;
-
-        vector<COORD> ziskat_telo();
-
+        vector <COORD> ziskat_telo();
         COORD ziskatPozici();
-
         bool snezeno(COORD jidlo);
         bool narazil();
-
 };
 
 #endif // HAD_H

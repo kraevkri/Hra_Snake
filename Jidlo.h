@@ -2,9 +2,8 @@
 #define JIDLO_H
 #include <windows.h>
 #include <cstdio>
+#include <cstdlib>
 
-
-#include<cstdlib>
 #define sirka 50
 #define vyska 25
 
